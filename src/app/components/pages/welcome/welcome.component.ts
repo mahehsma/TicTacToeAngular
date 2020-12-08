@@ -8,7 +8,7 @@ import { TicTacToeService } from '../../../services/tic-tac-toe.service';
 })
 export class WelcomeComponent implements OnInit {
   // @Input() todo!: Todo;
-  @Output() isAi: EventEmitter<boolean> = new EventEmitter();
+  // @Output() isAi: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private ticTacToeService: TicTacToeService) {}
 
@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit {
   ai(isAi: boolean) {
     // this.ticTacToeService.isAi(isAi).subscribe;
     console.log(isAi);
-    this.isAi.emit(isAi);
+    this.ticTacToeService.isAi = isAi;
     // this.deleteTodo.emit(todo)
   }
 

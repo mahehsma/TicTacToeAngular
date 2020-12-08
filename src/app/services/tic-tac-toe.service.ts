@@ -13,14 +13,26 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TicTacToeService {
-  player2Url: string = '../components/game/game.component.ts/';
+  private _isAi: boolean;
+  // player2Url: string = '../components/game/game.component.ts/';
 
-  constructor(/* private http: HttpClient */) {}
-
-  isAi(isAi: boolean): void /* Observable<any> */ {
-    console.log('SERVICE');
-    // return this.http.post<boolean>(this.player2Url, isAi, httpOptions);
+  constructor(/* private http: HttpClient */) {
+    this._isAi = true;
   }
+
+  get isAi(): boolean {
+    return this._isAi;
+  }
+
+  set isAi(isAi: boolean) {
+    this._isAi = isAi;
+    console.log('Ich bin jetzt: ' + this._isAi);
+  }
+
+  // isAi(isAi: boolean): void /* Observable<any> */ {
+  //   console.log('SERVICE');
+  // return this.http.post<boolean>(this.player2Url, isAi, httpOptions);
+  // }
 }
 
 // import { Injectable } from '@angular/core';
