@@ -21,8 +21,12 @@ export class GameComponent implements OnInit {
 
   constructor(private ticTacToeService: TicTacToeService) {
     this.counter = 0;
-    this.player1 = new Player('Player 1', false, true);
-    this.player2 = new Player('Player 2', ticTacToeService.isAi, false);
+    this.player1 = new Player(this.ticTacToeService.namePlayer1, false, true);
+    this.player2 = new Player(
+      this.ticTacToeService.namePlayer2,
+      ticTacToeService.isAi,
+      false
+    );
     this.board = new Board();
     this.state = new State();
     this._activePlayer = this.player1;

@@ -11,6 +11,7 @@ import { WelcomeComponent } from './components/pages/welcome/welcome.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { TicTacToeService } from './services/tic-tac-toe.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TicTacToeService } from './services/tic-tac-toe.service';
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [TicTacToeService],
   bootstrap: [AppComponent],
