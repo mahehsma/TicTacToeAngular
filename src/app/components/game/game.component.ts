@@ -5,6 +5,7 @@ import { State } from './state';
 import { Player } from './player';
 import { TicTacToeService } from '../../services/tic-tac-toe.service';
 import { Minimax } from './minimax';
+import { HistoryItem } from '../pages/history/history-item';
 
 @Component({
   selector: 'app-game',
@@ -73,6 +74,7 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P1WON
     ) {
+      this.createHistoryItem(this.player1.name,this.player2.name, false);
       alert(this.player1.name + ' hat gewonnen!');
     } else if (
       this.state.checkState(
@@ -81,10 +83,16 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P2WON
     ) {
+      this.createHistoryItem(this.player2.name,this.player1.name, false);
       alert(this.player2.name + ' hat gewonnen!');
     } else {
+      this.createHistoryItem(this.player1.name,this.player2.name, true);
       alert('Unentschieden!');
     }
+  }
+
+  private createHistoryItem(winner:string, loser:string, isDraw:boolean){
+    this.ticTacToeService.historyItem=new HistoryItem(winner,loser,isDraw);
   }
 
   resetGame() {

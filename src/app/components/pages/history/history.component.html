@@ -1,1 +1,20 @@
-<p>history works!</p>
+<div class="history">
+    <table>
+        <thead>
+            <tr>
+                <th>Spieler 1</th>
+                <th>Spieler 2</th>
+                <th>Ausgang</th>
+                <th>Datum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let historyItem of history; let i = index">
+                <td>{{ historyItem.winner }}</td>
+                <td>{{ historyItem.loser }}</td>
+                <td>{{ historyItem.isDraw }}</td>
+                <td>{{ historyItem.timestamp }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
