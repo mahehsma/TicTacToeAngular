@@ -8,8 +8,9 @@ import { GameComponent } from './components/game/game.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HistoryComponent } from './components/pages/history/history.component';
 import { WelcomeComponent } from './components/pages/welcome/welcome.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatInputModule} from '@angular/material/input';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { TicTacToeService } from './services/tic-tac-toe.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,9 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-    MatInputModule
+    MatInputModule,
   ],
-  providers: [],
+  providers: [TicTacToeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

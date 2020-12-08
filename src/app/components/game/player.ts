@@ -21,6 +21,12 @@ export class Player {
     return this._isAi;
   }
 
+  set isAi(isAi: boolean) {
+    this._isAi = isAi;
+    console.log('updated to : ' + this._isAi);
+    alert('sau');
+  }
+
   get figure(): string {
     return this._figure;
   }

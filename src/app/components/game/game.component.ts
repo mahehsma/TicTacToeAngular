@@ -4,6 +4,7 @@ import { Board } from './board';
 import { Field } from './field';
 import { State } from './state';
 import { Player } from './player';
+import { TicTacToeService } from '../../services/tic-tac-toe.service';
 
 @Component({
   selector: 'app-game',
@@ -18,7 +19,7 @@ export class GameComponent implements OnInit {
   state: State;
   _activePlayer: Player;
 
-  constructor() {
+  constructor(private ticTacToeService: TicTacToeService) {
     this.counter = 0;
     this.player1 = new Player('Player 1', false, true);
     this.player2 = new Player('Player 2', false, false);
@@ -85,5 +86,9 @@ export class GameComponent implements OnInit {
 
   get activePlayer(): string {
     return this._activePlayer.name;
+  }
+
+  set isAi(isAi: boolean) {
+    // this.ticTacToeService.isAi(isAi).subscribe(isAi => {this.player2.isAi(isAi)});
   }
 }
