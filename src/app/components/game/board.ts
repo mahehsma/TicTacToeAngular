@@ -12,4 +12,11 @@ export class Board {
   get fields(): Field[] {
     return this._fields;
   }
+  clone():Board{
+    let board = new Board();
+    for(let i=0; i<9;i++){
+      board.fields[i]=this.fields[i];
+    }
+    return board;
+  }
 }
