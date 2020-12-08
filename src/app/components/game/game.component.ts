@@ -5,6 +5,7 @@ import { Field } from './field';
 import { State } from './state';
 import { Player } from './player';
 import { TicTacToeService } from '../../services/tic-tac-toe.service';
+import { Minimax } from './minimax';
 
 @Component({
   selector: 'app-game',
@@ -22,7 +23,7 @@ export class GameComponent implements OnInit {
   constructor(private ticTacToeService: TicTacToeService) {
     this.counter = 0;
     this.player1 = new Player('Player 1', false, true);
-    this.player2 = new Player('Player 2', false, false);
+    this.player2 = new Player('Player 2', true, false);
     this.board = new Board();
     this.state = new State();
     this._activePlayer = this.player1;
@@ -33,6 +34,10 @@ export class GameComponent implements OnInit {
   onClick(fieldId: number) {
     if (this.board.fields[fieldId].isEmpty()) {
       this.move(fieldId);
+    }
+    if(this._activePlayer == this.player2 && this.player2.isAi){
+      let minimax= new Minimax(this.player2.name, this.player1.name);
+      this.move(minimax.bestmove(this.board));
     }
     // PvKI oder PvP + HTML-Teil
   }
