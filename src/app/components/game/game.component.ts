@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Board } from './board';
 import { Field } from './field';
@@ -23,7 +22,7 @@ export class GameComponent implements OnInit {
   constructor(private ticTacToeService: TicTacToeService) {
     this.counter = 0;
     this.player1 = new Player('Player 1', false, true);
-    this.player2 = new Player('Player 2', true, false);
+    this.player2 = new Player('Player 2', ticTacToeService.isAi, false);
     this.board = new Board();
     this.state = new State();
     this._activePlayer = this.player1;
@@ -35,8 +34,8 @@ export class GameComponent implements OnInit {
     if (this.board.fields[fieldId].isEmpty()) {
       this.move(fieldId);
     }
-    if(this._activePlayer == this.player2 && this.player2.isAi){
-      let minimax= new Minimax(this.player2.name, this.player1.name);
+    if (this._activePlayer == this.player2 && this.player2.isAi) {
+      let minimax = new Minimax(this.player2.name, this.player1.name);
       this.move(minimax.bestmove(this.board));
     }
     // PvKI oder PvP + HTML-Teil
@@ -91,9 +90,5 @@ export class GameComponent implements OnInit {
 
   get activePlayer(): string {
     return this._activePlayer.name;
-  }
-
-  set isAi(isAi: boolean) {
-    // this.ticTacToeService.isAi(isAi).subscribe(isAi => {this.player2.isAi(isAi)});
   }
 }
