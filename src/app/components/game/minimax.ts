@@ -18,6 +18,7 @@ export class Minimax{
             if(clonedBoard.fields[i].isEmpty()){
                 clonedBoard.fields[i].state=this.myFigure;
                 value = this.minimax(clonedBoard, false);
+                console.log('field '+i+': '+value);
                 clonedBoard.fields[i].state="";
                 if(value>bestValue){
                     bestValue = value;
