@@ -5,21 +5,23 @@ export class Minimax{
     myFigure: string;
     enemyFigure: string;
     constructor(myFigure: string, enemyFigure: string){
-        this.myFigure = enemyFigure;
+        this.myFigure = myFigure;
         this.enemyFigure = enemyFigure;
     }
 
     bestmove(board: Board): number{
         let clonedBoard: Board = board.clone();//has to be cloned
-        let value= -1;
-        let bestValue= -1;
+        //let clonedBoard = board;
+        let value;
+        let bestValue= -Infinity;
         let move = 0;
+        console.log('starting minimax...');
         for(let i=0; i<9; i++){
             if(clonedBoard.fields[i].isEmpty()){
                 clonedBoard.fields[i].state=this.myFigure;
                 value = this.minimax(clonedBoard, false);
                 console.log('field '+i+': '+value);
-                clonedBoard.fields[i].state="";
+                clonedBoard.fields[i].state='';
                 if(value>bestValue){
                     bestValue = value;
                     move = i;
@@ -44,8 +46,8 @@ export class Minimax{
             for(let i = 0; i<9; i++){
                 if(clonedBoard.fields[i].isEmpty()){
                     clonedBoard.fields[i].state=this.myFigure;
-                    value = this.minimax(clonedBoard, false);
-                    clonedBoard.fields[i].state="";
+                    value = this.minimax(clonedBoard, !isMaximizing);
+                    clonedBoard.fields[i].state='';
                     bestValue = Math.max(value, bestValue);
                 }
             }
@@ -57,8 +59,8 @@ export class Minimax{
             for(let i = 0; i<9; i++){
                 if(clonedBoard.fields[i].isEmpty()){
                     clonedBoard.fields[i].state=this.enemyFigure;
-                    value = this.minimax(clonedBoard, true);
-                    clonedBoard.fields[i].state="";
+                    value = this.minimax(clonedBoard, !isMaximizing);
+                    clonedBoard.fields[i].state='';
                     bestValue = Math.min(value, bestValue);
                 }
             }
