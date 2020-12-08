@@ -39,14 +39,18 @@ export class GameComponent implements OnInit {
       this.move(fieldId);
     }
     if (this._activePlayer == this.player2 && this.player2.isAi) {
-      if(this.state.checkState(this.board, this.player1.figure, this.player2.figure)==this.state.IS_RUNNING){}
+      if(this.state.checkState(this.board, this.player1.figure, this.player2.figure)==this.state.IS_RUNNING){
         let minimax = new Minimax(this.player2.name, this.player1.name);
         this.move(minimax.bestmove(this.board));
+      }
     }
     // PvKI oder PvP + HTML-Teil
   }
 
   move(fieldId: number): void {
+    if(this.state.checkState(this.board, this.player1.figure, this.player2.figure)!=this.state.IS_RUNNING){
+      return;
+    }
     if (this._activePlayer == this.player1) {
       this.board.fields[fieldId].state = this.player1.figure;
       this._activePlayer = this.player2;

@@ -14,7 +14,7 @@ export class State {
     else return 0;
   }
 
-  hasWon(board: Board, player: string): boolean {
+  private hasWon(board: Board, player: string): boolean {
     if (
       // check horizontal
       (board.fields[0].state == player &&
@@ -50,7 +50,7 @@ export class State {
     }
   }
 
-  isDraw(board: Board): boolean {
+  private isDraw(board: Board): boolean {
     for (let i=0; i<9;i++) {
       if (board.fields[i].isEmpty()) {
         return false;
