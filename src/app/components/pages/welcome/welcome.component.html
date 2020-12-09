@@ -14,17 +14,18 @@
     itaque nisi exercitationem.
   </p>
 </div>
+
 <div class="settings">
   <h2>Optionen</h2>
-  <mat-button-toggle-group>
-    <mat-button-toggle checked (click)="ai(true)"
+  <mat-button-toggle-group id="btnGroup">
+    <mat-button-toggle id="pvAiBtn" checked (click)="ai(true)"
       >Spieler gegen Computer</mat-button-toggle
     >
-    <mat-button-toggle (click)="ai(false)"
+    <mat-button-toggle id="pvpBtn" (click)="ai(false)"
       >Spieler gegen Spieler</mat-button-toggle
     >
   </mat-button-toggle-group>
-  <mat-form-field>
+  <mat-form-field id="p1Input">
     <mat-label>Spieler 1</mat-label>
     <input
       matInput
@@ -44,7 +45,13 @@
       (change)="namePlayer2()"
     />
   </mat-form-field>
+  <button id="start" routerLink="/game" mat-raised-button>Spiel starten</button>
+  <button id="history" routerLink="/history" mat-raised-button>Verlauf</button>
 </div>
+
+<!-- <li><a routerLink="/game">Spiel</a></li>
+      <li><a routerLink="/">Willkommen</a></li>
+      <li><a routerLink="/history">Verlauf</a></li> -->
 
 <!-- <label class="switch">
     <input type="checkbox" id="ai" (click)="isAi($event)" />
