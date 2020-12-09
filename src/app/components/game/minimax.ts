@@ -1,3 +1,4 @@
+
 import { Board } from './board';
 import { State } from './state';
 
@@ -31,12 +32,16 @@ export class Minimax{
         return move;
     }
 
+    minimax2(clonedBoard: Board,isMaximizing: boolean): number{
+        return Math.random()*10 -5;
+    }
+
     minimax(clonedBoard: Board,isMaximizing: boolean): number{
         let state = new State();
         let bestValue;
         let value;
         if(state.checkState(clonedBoard, this.enemyFigure, this.myFigure)==state.DRAW){
-            return 0;
+           return 0;
         }
         if(isMaximizing){
             if(state.checkState(clonedBoard, this.enemyFigure, this.myFigure)== state.P1WON){
@@ -51,6 +56,7 @@ export class Minimax{
                     bestValue = Math.max(value, bestValue);
                 }
             }
+            return bestValue;
         } else{
             if(state.checkState(clonedBoard, this.enemyFigure, this.myFigure)== state.P2WON){
                 return Infinity;
@@ -64,8 +70,8 @@ export class Minimax{
                     bestValue = Math.min(value, bestValue);
                 }
             }
+            return bestValue;
         }
-        return bestValue;
     }
 
 }

@@ -1,4 +1,3 @@
-import { fromEventPattern } from 'rxjs';
 import { Board } from './board';
 
 export class State {
@@ -8,10 +7,10 @@ export class State {
   DRAW = 3;
 
   checkState(board: Board, player1: string, player2: string): number {
-    if (this.hasWon(board, player1)) return 1;
-    if (this.hasWon(board, player2)) return 2;
-    if (this.isDraw(board)) return 3;
-    else return 0;
+    if (this.hasWon(board, player1)) return this.P1WON;
+    if (this.hasWon(board, player2)) return this.P2WON;
+    if (this.isDraw(board)) return this.DRAW;
+    else return this.IS_RUNNING;
   }
 
   private hasWon(board: Board, player: string): boolean {
