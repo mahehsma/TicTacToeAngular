@@ -8,6 +8,7 @@ import { Minimax } from './minimax';
 import { HistoryItem } from '../pages/history/history-item';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,8 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
+  private title = 'Tic-Tac-Toe';
+
   private player1: Player;
   private player2: Player;
   private board: Board;
@@ -23,6 +26,7 @@ export class GameComponent implements OnInit {
 
   constructor(
     private ticTacToeService: TicTacToeService,
+    private titleService: Title,
     private dialog: MatDialog
   ) {
     this.player1 = new Player(this.ticTacToeService.namePlayer1, false, true);
@@ -34,6 +38,7 @@ export class GameComponent implements OnInit {
     this.board = new Board();
     this.state = new State();
     this._activePlayer = this.player1;
+    this.setTitle();
   }
 
   ngOnInit(): void {}
@@ -138,5 +143,9 @@ export class GameComponent implements OnInit {
 
   get activePlayer(): string {
     return this._activePlayer.name;
+  }
+
+  setTitle(): void {
+    this.titleService.setTitle(this.title);
   }
 }

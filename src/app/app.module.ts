@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +35,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatButtonModule,
     MatDialogModule,
   ],
-  providers: [TicTacToeService],
+  providers: [TicTacToeService, Title],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent], //deprecated?
 })

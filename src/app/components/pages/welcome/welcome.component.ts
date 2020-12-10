@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { TicTacToeService } from '../../../services/tic-tac-toe.service';
 
 @Component({
@@ -8,10 +9,17 @@ import { TicTacToeService } from '../../../services/tic-tac-toe.service';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
+  private title = 'Willkommen!';
+
   player1 = new FormControl('');
   player2 = new FormControl('');
 
-  constructor(private ticTacToeService: TicTacToeService) {}
+  constructor(
+    private ticTacToeService: TicTacToeService,
+    private titleService: Title
+  ) {
+    this.setTitle();
+  }
 
   ngOnInit(): void {}
 
@@ -27,5 +35,9 @@ export class WelcomeComponent implements OnInit {
 
   namePlayer2() {
     this.ticTacToeService.namePlayer2 = this.player2.value;
+  }
+
+  setTitle(): void {
+    this.titleService.setTitle(this.title);
   }
 }
