@@ -1,0 +1,8 @@
+h2,p {
+    text-align: center;
+}
+
+#btnGroup{
+    display: flex;
+    justify-content: center;
+}

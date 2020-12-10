@@ -6,6 +6,8 @@ import { Player } from './player';
 import { TicTacToeService } from '../../services/tic-tac-toe.service';
 import { Minimax } from './minimax';
 import { HistoryItem } from '../pages/history/history-item';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog"
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-game',
@@ -20,7 +22,7 @@ export class GameComponent implements OnInit {
   state: State;
   _activePlayer: Player;
 
-  constructor(private ticTacToeService: TicTacToeService) {
+  constructor(private ticTacToeService: TicTacToeService, private dialog: MatDialog) {
     this.counter = 0;
     this.player1 = new Player(this.ticTacToeService.namePlayer1, false, true);
     this.player2 = new Player(
@@ -87,8 +89,14 @@ export class GameComponent implements OnInit {
     }
   }
 
+  openDialog(){
+    this.dialog.open(DialogComponent);
+  }
+
+
   private createHistoryItem(player1: string, player2: string, state: number) {
     this.ticTacToeService.historyItem = new HistoryItem(player1, player2, state);
+    this.openDialog();
   }
 
   resetGame() {
