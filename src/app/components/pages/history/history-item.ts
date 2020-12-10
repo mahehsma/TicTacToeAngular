@@ -1,3 +1,5 @@
+import { State } from '../../game/state';
+
 export class HistoryItem {
     private _player1: string;
     private _player2: string;
@@ -19,8 +21,9 @@ export class HistoryItem {
         return this._player2;
     }
     
-    get isDraw():string{
-        if(this._state) return 'unentschieden';
+    get state():string{
+        if(this._state == 3) return 'unentschieden';
+        if(this._state ==2) return this._player2 + ' hat gewonnen!';
         return this._player1 + ' hat gewonnen!';
     }
 

@@ -45,7 +45,6 @@ export class GameComponent implements OnInit {
         this.move(minimax.bestmove(this.board));
       }
     }
-    // PvKI oder PvP + HTML-Teil
   }
 
   move(fieldId: number): void {
@@ -75,7 +74,6 @@ export class GameComponent implements OnInit {
       ) == this.state.P1WON
     ) {
       this.createHistoryItem(this.player1.name, this.player2.name, this.state.P1WON);
-      alert(this.player1.name + ' hat gewonnen!');
     } else if (
       this.state.checkState(
         this.board,
@@ -84,10 +82,8 @@ export class GameComponent implements OnInit {
       ) == this.state.P2WON
     ) {
       this.createHistoryItem(this.player1.name, this.player2.name, this.state.P2WON);
-      alert(this.player2.name + ' hat gewonnen!');
     } else {
       this.createHistoryItem(this.player1.name, this.player2.name, this.state.DRAW);
-      alert('Unentschieden!');
     }
   }
 
@@ -108,4 +104,5 @@ export class GameComponent implements OnInit {
   get activePlayer(): string {
     return this._activePlayer.name;
   }
+
 }

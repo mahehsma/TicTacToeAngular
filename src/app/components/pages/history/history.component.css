@@ -14,10 +14,30 @@ th, td {
     text-align: center;    
 }
 
-.history{
-  margin-top: 40px;
+.content{
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.history{
+  margin-top: 40px;
+  max-width: 500px;
+}
+
+#start{
+  background-color: #53619e;
+  color: white;
+}
+
+
+#start, #settings{
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+.btnContainer{
+  margin-top: 30px;
 }

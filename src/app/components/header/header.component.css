@@ -8,3 +8,10 @@
     font-size: 32px;
     font-weight: bold;
 }
+
+.topBar a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 5px;
+}

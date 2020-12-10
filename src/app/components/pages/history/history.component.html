@@ -1,21 +1,27 @@
-<div class="history">
-    <h1>Verlauf</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Spieler 1</th>
-                <th>Spieler 2</th>
-                <th>Ausgang</th>
-                <th>Datum</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let historyItem of history; let i = index">
-                <td>{{ historyItem.winner }}</td>
-                <td>{{ historyItem.loser }}</td>
-                <td>{{ historyItem.isDraw }}</td>
-                <td>{{ historyItem.timestamp }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="content">
+    <div class="history">
+        <h1>Verlauf</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Spieler 1</th>
+                    <th>Spieler 2</th>
+                    <th>Ausgang</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let historyItem of history; let i = index">
+                    <td>{{ historyItem.player1 }}</td>
+                    <td>{{ historyItem.player2 }}</td>
+                    <td>{{ historyItem.state }}</td>
+                    <td>{{ historyItem.timestamp }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btnContainer">
+            <button id="start" routerLink="/game" mat-raised-button>Spiel starten</button>
+            <button id="settings" routerLink="/" mat-raised-button>Einstellungen</button>
+        </div>
+    </div>
 </div>
