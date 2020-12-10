@@ -33,15 +33,15 @@ export class GameComponent implements OnInit {
     this._activePlayer = this.player1;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onClick(fieldId: number) {
     if (this.board.fields[fieldId].isEmpty()) {
       this.move(fieldId);
     }
     if (this._activePlayer == this.player2 && this.player2.isAi) {
-      if(this.state.checkState(this.board, this.player1.figure, this.player2.figure)==this.state.IS_RUNNING){
-        let minimax = new Minimax(this.player2.name, this.player1.name);
+      if (this.state.checkState(this.board, this.player1.figure, this.player2.figure) == this.state.IS_RUNNING) {
+        let minimax = new Minimax(this.player2.figure, this.player1.figure);
         this.move(minimax.bestmove(this.board));
       }
     }
@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
   }
 
   move(fieldId: number): void {
-    if(this.state.checkState(this.board, this.player1.figure, this.player2.figure)!=this.state.IS_RUNNING){
+    if (this.state.checkState(this.board, this.player1.figure, this.player2.figure) != this.state.IS_RUNNING) {
       return;
     }
     if (this._activePlayer == this.player1) {
@@ -74,7 +74,7 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P1WON
     ) {
-      this.createHistoryItem(this.player1.name,this.player2.name, false);
+      this.createHistoryItem(this.player1.name, this.player2.name, this.state.P1WON);
       alert(this.player1.name + ' hat gewonnen!');
     } else if (
       this.state.checkState(
@@ -83,16 +83,16 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P2WON
     ) {
-      this.createHistoryItem(this.player2.name,this.player1.name, false);
+      this.createHistoryItem(this.player1.name, this.player2.name, this.state.P2WON);
       alert(this.player2.name + ' hat gewonnen!');
     } else {
-      this.createHistoryItem(this.player1.name,this.player2.name, true);
+      this.createHistoryItem(this.player1.name, this.player2.name, this.state.DRAW);
       alert('Unentschieden!');
     }
   }
 
-  private createHistoryItem(winner:string, loser:string, isDraw:boolean){
-    this.ticTacToeService.historyItem=new HistoryItem(winner,loser,isDraw);
+  private createHistoryItem(player1: string, player2: string, state: number) {
+    this.ticTacToeService.historyItem = new HistoryItem(player1, player2, state);
   }
 
   resetGame() {

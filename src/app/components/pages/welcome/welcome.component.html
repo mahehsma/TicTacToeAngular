@@ -1,54 +1,57 @@
-<div class="welcome-text">
-  <h1>Willkommen!</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-    cupiditate ipsum quasi ipsa placeat beatae laborum quisquam esse est! Qui,
-    nam quisquam. Ut odio, adipisci quis tempora reiciendis earum delectus
-    facilis error dignissimos vel, numquam modi impedit, hic minima rerum
-    incidunt accusantium voluptas saepe fugit qui dicta. Minima ex consequuntur
-    veritatis tempore facilis fuga, sit tempora libero earum velit dolore animi
-    fugiat accusantium, nesciunt incidunt adipisci illo numquam! Dolor alias
-    inventore minus earum suscipit, laborum esse autem. Consequatur, unde
-    incidunt obcaecati asperiores quia maxime aperiam veniam odio nisi voluptate
-    reprehenderit illum? Voluptatum doloribus, quibusdam autem accusamus eveniet
-    itaque nisi exercitationem.
-  </p>
-</div>
+<div class="content">
 
-<div class="settings">
-  <h2>Optionen</h2>
-  <mat-button-toggle-group id="btnGroup">
-    <mat-button-toggle id="pvAiBtn" checked (click)="ai(true)"
-      >Spieler gegen Computer</mat-button-toggle
-    >
-    <mat-button-toggle id="pvpBtn" (click)="ai(false)"
-      >Spieler gegen Spieler</mat-button-toggle
-    >
-  </mat-button-toggle-group>
-  <mat-form-field id="p1Input">
-    <mat-label>Spieler 1</mat-label>
-    <input
-      matInput
-      type="text"
-      value="Spieler 1"
-      [formControl]="player1"
-      (change)="namePlayer1()"
-    />
-  </mat-form-field>
-  <mat-form-field id="p2Input">
-    <mat-label>Spieler 2</mat-label>
-    <input
-      matInput
-      type="text"
-      value="Spieler 2"
-      [formControl]="player2"
-      (change)="namePlayer2()"
-    />
-  </mat-form-field>
-  <button id="start" routerLink="/game" mat-raised-button>Spiel starten</button>
-  <button id="history" routerLink="/history" mat-raised-button>Verlauf</button>
-</div>
+  <div class="welcome-text">
+    <h1>Willkommen!</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
+      cupiditate ipsum quasi ipsa placeat beatae laborum quisquam esse est! Qui,
+      nam quisquam. Ut odio, adipisci quis tempora reiciendis earum delectus
+      facilis error dignissimos vel, numquam modi impedit, hic minima rerum
+      incidunt accusantium voluptas saepe fugit qui dicta. Minima ex consequuntur
+      veritatis tempore facilis fuga, sit tempora libero earum velit dolore animi
+      fugiat accusantium, nesciunt incidunt adipisci illo numquam! Dolor alias
+      inventore minus earum suscipit, laborum esse autem. Consequatur, unde
+      incidunt obcaecati asperiores quia maxime aperiam veniam odio nisi voluptate
+      reprehenderit illum? Voluptatum doloribus, quibusdam autem accusamus eveniet
+      itaque nisi exercitationem.
+    </p>
+  </div>
 
+  <div class="settings">
+    <h2>Optionen</h2>
+    <mat-button-toggle-group id="btnGroup">
+      <mat-button-toggle id="pvAiBtn" checked (click)="ai(true)"
+        >Spieler gegen Computer</mat-button-toggle
+      >
+      <mat-button-toggle id="pvpBtn" (click)="ai(false)"
+        >Spieler gegen Spieler</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+    <mat-form-field id="p1Input">
+      <mat-label>Spieler 1</mat-label>
+      <input
+        matInput
+        type="text"
+        value="Spieler 1"
+        [formControl]="player1"
+        (change)="namePlayer1()"
+      />
+    </mat-form-field>
+    <mat-form-field id="p2Input">
+      <mat-label>Spieler 2</mat-label>
+      <input
+        matInput
+        type="text"
+        value="Spieler 2"
+        [formControl]="player2"
+        (change)="namePlayer2()"
+      />
+    </mat-form-field>
+    <button id="start" routerLink="/game" mat-raised-button>Spiel starten</button>
+    <button id="history" routerLink="/history" mat-raised-button>Verlauf</button>
+  </div>
+
+</div>
 <!-- <li><a routerLink="/game">Spiel</a></li>
       <li><a routerLink="/">Willkommen</a></li>
       <li><a routerLink="/history">Verlauf</a></li> -->

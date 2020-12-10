@@ -11,7 +11,7 @@ export class TicTacToeService {
   private _historyItem: HistoryItem[] = []; 
 
   constructor() {
-    this._historyItem.push(new HistoryItem('John', 'Wayne', false));
+    this._historyItem.push(new HistoryItem('John', 'Wayne', 1));
   }
 
   get isAi(): boolean {
@@ -28,7 +28,6 @@ export class TicTacToeService {
 
   set namePlayer1(name: string) {
     this._namePlayer1 = name;
-    console.log('Spieler 1 heißt jetzt: ' + this._namePlayer1);
   }
 
   get namePlayer2(): string {
@@ -37,7 +36,6 @@ export class TicTacToeService {
 
   set namePlayer2(name: string) {
     this._namePlayer2 = name;
-    console.log('Spieler 2 heißt jetzt: ' + this._namePlayer2);
   }
 
   set historyItem(historyItem:HistoryItem){

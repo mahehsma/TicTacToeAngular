@@ -1,29 +1,30 @@
 export class HistoryItem {
-    private _winner: string;
-    private _loser: string;
+    private _player1: string;
+    private _player2: string;
+    private _state: number;
     private _timestamp: Date;
-    private _isDraw: boolean;
 
-    constructor(winner: string, loser: string, isDraw: boolean) {
-        this._winner = winner;
-        this._loser = loser;
+    constructor(player1: string, player2: string, state: number) {
+        this._player1 = player1;
+        this._player2 = player2;
         this._timestamp = new Date();
-        this._isDraw = isDraw;
+        this._state = state;
     }
     
-    get winner():string{
-        return this._winner;
+    get player1():string{
+        return this._player1;
     }
     
-    get loser():string{
-        return this._loser;
+    get player2():string{
+        return this._player2;
     }
     
-    get isDraw():boolean{
-        return this._isDraw;
+    get isDraw():string{
+        if(this._state) return 'unentschieden';
+        return this._player1 + ' hat gewonnen!';
     }
 
-    get timestamp():Date{
-        return this._timestamp;
+    get timestamp():string{
+        return this._timestamp.toLocaleDateString()+" / " + this._timestamp.toLocaleTimeString();
     }
 }
