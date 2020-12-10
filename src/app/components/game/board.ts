@@ -12,10 +12,11 @@ export class Board {
   get fields(): Field[] {
     return this._fields;
   }
-  clone():Board{
+
+  clone(): Board {
     let board = new Board();
-    for(let i=0; i<9;i++){
-      board.fields[i].state=this.fields[i].state;
+    for (let i = 0; i < 9; i++) {
+      board.fields[i].state = this.fields[i].state;
     }
     return board;
   }

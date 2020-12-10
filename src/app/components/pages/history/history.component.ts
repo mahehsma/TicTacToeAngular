@@ -5,7 +5,7 @@ import { TicTacToeService } from '../../../services/tic-tac-toe.service';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css']
+  styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
   private _history: HistoryItem[] = [];
@@ -14,12 +14,9 @@ export class HistoryComponent implements OnInit {
     this._history = this.ticTacToeService.historyItems;
   }
 
-  ngOnInit(): void {
-    // this._history = this.ticTacToeService.historyItems;
-  }
+  ngOnInit(): void {}
 
-  get history():HistoryItem[]{
+  get history(): HistoryItem[] {
     return this._history;
   }
-
 }

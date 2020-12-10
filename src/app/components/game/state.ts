@@ -50,7 +50,7 @@ export class State {
   }
 
   private isDraw(board: Board): boolean {
-    for (let i=0; i<9;i++) {
+    for (let i = 0; i < 9; i++) {
       if (board.fields[i].isEmpty()) {
         return false;
       }

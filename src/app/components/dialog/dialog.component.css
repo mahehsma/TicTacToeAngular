@@ -1,8 +1,9 @@
-h2,p {
-    text-align: center;
+h2,
+p {
+  text-align: center;
 }
 
-#btnGroup{
-    display: flex;
-    justify-content: center;
+#btnGroup {
+  display: flex;
+  justify-content: center;
 }

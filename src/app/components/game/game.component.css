@@ -18,7 +18,7 @@
   border: 1px solid black;
 }
 
-.field p{
+.field p {
   padding-top: 12vh;
 }
 
@@ -54,11 +54,11 @@
     font-size: 24vw;
   }
 
-  .field p{
+  .field p {
     padding-top: 12vw;
   }
 
-  #resetGame{
+  #resetGame {
     width: 35vw;
   }
 }

@@ -6,7 +6,7 @@ import { Player } from './player';
 import { TicTacToeService } from '../../services/tic-tac-toe.service';
 import { Minimax } from './minimax';
 import { HistoryItem } from '../pages/history/history-item';
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog"
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -15,15 +15,16 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
-  player1: Player;
-  player2: Player;
-  counter: number;
-  board: Board;
-  state: State;
-  _activePlayer: Player;
+  private player1: Player;
+  private player2: Player;
+  private board: Board;
+  private state: State;
+  private _activePlayer: Player;
 
-  constructor(private ticTacToeService: TicTacToeService, private dialog: MatDialog) {
-    this.counter = 0;
+  constructor(
+    private ticTacToeService: TicTacToeService,
+    private dialog: MatDialog
+  ) {
     this.player1 = new Player(this.ticTacToeService.namePlayer1, false, true);
     this.player2 = new Player(
       this.ticTacToeService.namePlayer2,
@@ -35,14 +36,20 @@ export class GameComponent implements OnInit {
     this._activePlayer = this.player1;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onClick(fieldId: number) {
     if (this.board.fields[fieldId].isEmpty()) {
       this.move(fieldId);
     }
     if (this._activePlayer == this.player2 && this.player2.isAi) {
-      if (this.state.checkState(this.board, this.player1.figure, this.player2.figure) == this.state.IS_RUNNING) {
+      if (
+        this.state.checkState(
+          this.board,
+          this.player1.figure,
+          this.player2.figure
+        ) == this.state.IS_RUNNING
+      ) {
         let minimax = new Minimax(this.player2.figure, this.player1.figure);
         this.move(minimax.bestmove(this.board));
       }
@@ -50,7 +57,13 @@ export class GameComponent implements OnInit {
   }
 
   move(fieldId: number): void {
-    if (this.state.checkState(this.board, this.player1.figure, this.player2.figure) != this.state.IS_RUNNING) {
+    if (
+      this.state.checkState(
+        this.board,
+        this.player1.figure,
+        this.player2.figure
+      ) != this.state.IS_RUNNING
+    ) {
       return;
     }
     if (this._activePlayer == this.player1) {
@@ -75,7 +88,11 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P1WON
     ) {
-      this.createHistoryItem(this.player1.name, this.player2.name, this.state.P1WON);
+      this.createHistoryItem(
+        this.player1.name,
+        this.player2.name,
+        this.state.P1WON
+      );
     } else if (
       this.state.checkState(
         this.board,
@@ -83,25 +100,35 @@ export class GameComponent implements OnInit {
         this.player2.figure
       ) == this.state.P2WON
     ) {
-      this.createHistoryItem(this.player1.name, this.player2.name, this.state.P2WON);
+      this.createHistoryItem(
+        this.player1.name,
+        this.player2.name,
+        this.state.P2WON
+      );
     } else {
-      this.createHistoryItem(this.player1.name, this.player2.name, this.state.DRAW);
+      this.createHistoryItem(
+        this.player1.name,
+        this.player2.name,
+        this.state.DRAW
+      );
     }
   }
 
-  openDialog(){
+  openDialog() {
     this.dialog.open(DialogComponent);
   }
 
-
   private createHistoryItem(player1: string, player2: string, state: number) {
-    this.ticTacToeService.historyItem = new HistoryItem(player1, player2, state);
+    this.ticTacToeService.historyItem = new HistoryItem(
+      player1,
+      player2,
+      state
+    );
     this.openDialog();
   }
 
   resetGame() {
     this.board = new Board();
-    this.counter = 0;
     this._activePlayer = this.player1;
   }
 
@@ -112,5 +139,4 @@ export class GameComponent implements OnInit {
   get activePlayer(): string {
     return this._activePlayer.name;
   }
-
 }

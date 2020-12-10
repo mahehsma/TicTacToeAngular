@@ -10,7 +10,7 @@ import { WelcomeComponent } from './components/pages/welcome/welcome.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { TicTacToeService } from './services/tic-tac-toe.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
@@ -37,6 +37,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
   ],
   providers: [TicTacToeService],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent],//deprecated?
+  entryComponents: [DialogComponent], //deprecated?
 })
 export class AppModule {}

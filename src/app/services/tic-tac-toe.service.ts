@@ -8,7 +8,7 @@ export class TicTacToeService {
   private _isAi: boolean = true;
   private _namePlayer1: string = 'Spieler 1';
   private _namePlayer2: string = 'Spieler 2';
-  private _historyItem: HistoryItem[] = []; 
+  private _historyItem: HistoryItem[] = [];
 
   constructor() {
     this._historyItem.push(new HistoryItem('John', 'Wayne', 1));
@@ -38,11 +38,11 @@ export class TicTacToeService {
     this._namePlayer2 = name;
   }
 
-  set historyItem(historyItem:HistoryItem){
+  set historyItem(historyItem: HistoryItem) {
     this._historyItem.push(historyItem);
   }
 
-  get historyItems(): HistoryItem[]{
+  get historyItems(): HistoryItem[] {
     return this._historyItem;
   }
 }
