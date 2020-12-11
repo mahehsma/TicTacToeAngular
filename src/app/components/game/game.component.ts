@@ -98,6 +98,7 @@ export class GameComponent implements OnInit {
         this.player2.name,
         this.state.P1WON
       );
+      this.openDialog(this.state.P1WON);
     } else if (
       this.state.checkState(
         this.board,
@@ -110,17 +111,27 @@ export class GameComponent implements OnInit {
         this.player2.name,
         this.state.P2WON
       );
+      this.openDialog(this.state.P2WON);
     } else {
       this.createHistoryItem(
         this.player1.name,
         this.player2.name,
         this.state.DRAW
       );
+      this.openDialog(this.state.DRAW);
     }
   }
 
-  openDialog() {
-    this.dialog.open(DialogComponent);
+  openDialog(state: number) {
+    let data: string = this.getStateMessage(state);
+    this.dialog.open(DialogComponent, {
+      data
+    });
+  }
+  getStateMessage(state: number): string{
+    if(state == this.state.DRAW) return "Unentschieden!";
+    if(state == this.state.P1WON) return this.player1.name+" hat gewonnen!";
+    return this.player2.name+" hat gewonnen!";
   }
 
   private createHistoryItem(player1: string, player2: string, state: number) {
@@ -129,7 +140,6 @@ export class GameComponent implements OnInit {
       player2,
       state
     );
-    this.openDialog();
   }
 
   resetGame() {

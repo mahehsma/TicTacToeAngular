@@ -1,5 +1,5 @@
 h2,
-p {
+p, #content {
   text-align: center;
 }
 
@@ -7,3 +7,5 @@ p {
   display: flex;
   justify-content: center;
 }
+
+
