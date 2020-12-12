@@ -9,8 +9,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
-  private title = 'Verlauf';
-
   private _history: HistoryItem[] = [];
 
   constructor(
@@ -18,16 +16,12 @@ export class HistoryComponent implements OnInit {
     private titleService: Title
   ) {
     this._history = this.ticTacToeService.historyItems;
-    this.setTitle();
+    this.titleService.setTitle('Verlauf');
   }
 
   ngOnInit(): void {}
 
   get history(): HistoryItem[] {
     return this._history;
-  }
-
-  setTitle(): void {
-    this.titleService.setTitle(this.title);
   }
 }
