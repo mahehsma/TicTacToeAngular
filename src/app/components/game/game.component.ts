@@ -16,8 +16,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
-  private title = 'Tic-Tac-Toe';
-
   private player1: Player;
   private player2: Player;
   private board: Board;
@@ -38,7 +36,7 @@ export class GameComponent implements OnInit {
     this.board = new Board();
     this.state = new State();
     this._activePlayer = this.player1;
-    this.setTitle();
+    this.titleService.setTitle('Tic-Tac-Toe');
   }
 
   ngOnInit(): void {}
@@ -125,13 +123,13 @@ export class GameComponent implements OnInit {
   openDialog(state: number) {
     let data: string = this.getStateMessage(state);
     this.dialog.open(DialogComponent, {
-      data
+      data,
     });
   }
-  getStateMessage(state: number): string{
-    if(state == this.state.DRAW) return "Unentschieden!";
-    if(state == this.state.P1WON) return this.player1.name+" hat gewonnen!";
-    return this.player2.name+" hat gewonnen!";
+  getStateMessage(state: number): string {
+    if (state == this.state.DRAW) return 'Unentschieden!';
+    if (state == this.state.P1WON) return this.player1.name + ' hat gewonnen!';
+    return this.player2.name + ' hat gewonnen!';
   }
 
   private createHistoryItem(player1: string, player2: string, state: number) {
@@ -153,9 +151,5 @@ export class GameComponent implements OnInit {
 
   get activePlayer(): string {
     return this._activePlayer.name;
-  }
-
-  setTitle(): void {
-    this.titleService.setTitle(this.title);
   }
 }
