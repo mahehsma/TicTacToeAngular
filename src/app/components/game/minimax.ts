@@ -11,7 +11,7 @@ export class Minimax {
   }
 
   bestmove(board: Board): number {
-    let clonedBoard: Board = board.clone(); //has to be cloned
+    let clonedBoard: Board = board.clone(); 
     let value;
     let bestValue = -Infinity;
     let move = 0;
@@ -29,10 +29,6 @@ export class Minimax {
       }
     }
     return move;
-  }
-
-  minimax2(clonedBoard: Board, isMaximizing: boolean): number {
-    return Math.random() * 10 - 5;
   }
 
   minimax(clonedBoard: Board, isMaximizing: boolean): number {
