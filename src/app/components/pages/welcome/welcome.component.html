@@ -19,14 +19,18 @@
 
   <div class="settings">
     <h2>Optionen</h2>
+    <!-- Gruppierung von Toggle-Button im Material Design wobei als Auswahl nur einen Button zugelassen ist -->
     <mat-button-toggle-group id="btnGroup">
+      <!-- Erstellug von Toggle-Button um Spieler 2 als Pc zu setzen  -->
       <mat-button-toggle id="pvAiBtn" checked (click)="ai(true)"
         >Spieler gegen Computer</mat-button-toggle
       >
+      <!-- Erstellug von Toggle-Button Spielmodus als PvP zu setzen  -->
       <mat-button-toggle id="pvpBtn" (click)="ai(false)"
         >Spieler gegen Spieler</mat-button-toggle
       >
     </mat-button-toggle-group>
+    <!-- Eingabe für Name von Spieler 1 im Material Design, wird bei Aenderung aktualisiert -->
     <mat-form-field id="p1Input">
       <mat-label>Spieler 1</mat-label>
       <input
@@ -37,6 +41,7 @@
         (change)="namePlayer1()"
       />
     </mat-form-field>
+    <!-- Eingabe für Name von Spieler 2 im Material Design, wird bei Aenderung aktualisiert -->
     <mat-form-field id="p2Input">
       <mat-label>Spieler 2</mat-label>
       <input

@@ -9,11 +9,15 @@ export class Minimax {
     this.myFigure = myFigure;
     this.enemyFigure = enemyFigure;
   }
-
+  /*
+    wendet auf jedes freie Feld den Minimax-Algorithmus an und 
+    waehlt das Feld mit der hoechsten Bewertung
+    sind mehrere Felder gleich hoch bewertet wird das Erste gewählt
+  */
   bestmove(board: Board): number {
-    let clonedBoard: Board = board.clone(); 
+    let clonedBoard: Board = board.clone(); //Kopie um Fehler zu vermeiden
     let value;
-    let bestValue = -Infinity;
+    let bestValue = -Infinity; //schlechtmoeglichster Wert
     let move = 0;
     console.log('starting minimax...');
     for (let i = 0; i < 9; i++) {
@@ -31,6 +35,15 @@ export class Minimax {
     return move;
   }
 
+  /*
+  Überprüft bei jedem Aufruf ob Spiel beendet, falls dem so ist wird Ausgang als Zahlenwert zurückgegeben
+  Es gilt: 0: unentschieden, -Infinity: Gegner gewonnen, Infinity: Pc gewonnen
+
+  Ansonsten wird rekursiv jeder mögliche Folgezug getestet, dabei wird im Wechsel der minimierende Part und 
+  der maximierende Part angesprochen, 
+  Es wird davon ausgegangen, dass der minimierende Part (Gegner) immer den für den maximierenden Part (Pc) schlechtesten 
+  Zug waehlt
+  */
   minimax(clonedBoard: Board, isMaximizing: boolean): number {
     let state = new State();
     let bestValue;
@@ -46,7 +59,7 @@ export class Minimax {
         state.checkState(clonedBoard, this.enemyFigure, this.myFigure) ==
         state.P1WON
       ) {
-        return -Infinity;
+        return -Infinity; //da letzer Zug (/Aufruf) von minimierendem Part erfolgt
       }
       bestValue = -Infinity;
       for (let i = 0; i < 9; i++) {
@@ -54,16 +67,16 @@ export class Minimax {
           clonedBoard.fields[i].state = this.myFigure;
           value = this.minimax(clonedBoard, !isMaximizing);
           clonedBoard.fields[i].state = '';
-          bestValue = Math.max(value, bestValue);
+          bestValue = Math.max(value, bestValue); //liefert hoechsten Wert
         }
       }
-      return bestValue;
+      return bestValue; //bester Wert für Pc
     } else {
       if (
         state.checkState(clonedBoard, this.enemyFigure, this.myFigure) ==
         state.P2WON
       ) {
-        return Infinity;
+        return Infinity; //da letzer Zug (/Aufruf) von maximierendem Part erfolgt
       }
       bestValue = Infinity;
       for (let i = 0; i < 9; i++) {
@@ -71,10 +84,10 @@ export class Minimax {
           clonedBoard.fields[i].state = this.enemyFigure;
           value = this.minimax(clonedBoard, !isMaximizing);
           clonedBoard.fields[i].state = '';
-          bestValue = Math.min(value, bestValue);
+          bestValue = Math.min(value, bestValue); //liefert niedrigsten Wert
         }
       }
-      return bestValue;
+      return bestValue; //bester Wert für Gegner
     }
   }
 }

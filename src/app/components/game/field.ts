@@ -1,4 +1,5 @@
 export class Field {
+  // Spielfigur, die auf das Feld gesetzt wurde
   private _state: string;
 
   constructor() {

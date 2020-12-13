@@ -16,21 +16,23 @@ export class WelcomeComponent implements OnInit {
     private ticTacToeService: TicTacToeService,
     private titleService: Title
   ) {
+    // benennt Browser-Tab
     this.titleService.setTitle('Willkommen');
   }
 
   ngOnInit(): void {}
 
+  //uebermittelt dem Service Spieler 2 von Pc gesteuert werden soll
   ai(isAi: boolean) {
     this.ticTacToeService.isAi = isAi;
   }
 
-  changeP2Visibility() {}
-
+  //uebergibt eingegebenen Spielernamen an TicTacToeService
   namePlayer1() {
     this.ticTacToeService.namePlayer1 = this.player1.value;
   }
 
+  //uebergibt eingegebenen Spielernamen an TicTacToeService
   namePlayer2() {
     this.ticTacToeService.namePlayer2 = this.player2.value;
   }

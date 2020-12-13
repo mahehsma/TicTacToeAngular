@@ -12,10 +12,12 @@ export class HistoryComponent implements OnInit {
   private _history: HistoryItem[] = [];
 
   constructor(
+    // Verknuepfungen zu Service-Klassen
     private ticTacToeService: TicTacToeService,
     private titleService: Title
   ) {
     this._history = this.ticTacToeService.historyItems;
+    // benennt Browser-Tab
     this.titleService.setTitle('Verlauf');
   }
 

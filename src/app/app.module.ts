@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
+  // Komponenten, die im Modul enhalten sind
   declarations: [
     AppComponent,
     GameComponent,
@@ -25,6 +26,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HeaderComponent,
     DialogComponent,
   ],
+  // Module, die importiert werden
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,8 +37,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatButtonModule,
     MatDialogModule,
   ],
+  // Service-Klassen
   providers: [TicTacToeService, Title],
+  // Root-Komponente
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent], //deprecated?
 })
 export class AppModule {}

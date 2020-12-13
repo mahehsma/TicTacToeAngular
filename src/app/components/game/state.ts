@@ -6,6 +6,7 @@ export class State {
   P2WON = 2;
   DRAW = 3;
 
+  // ueberprueft den aktuellen Spielzustand
   checkState(board: Board, player1: string, player2: string): number {
     if (this.hasWon(board, player1)) return this.P1WON;
     if (this.hasWon(board, player2)) return this.P2WON;
@@ -13,9 +14,10 @@ export class State {
     else return this.IS_RUNNING;
   }
 
+  // ueberprueft, ob ein Spieler 3 Figuren in einer Reihe gesetzt hat
   private hasWon(board: Board, player: string): boolean {
     if (
-      // check horizontal
+      // horizontal
       (board.fields[0].state == player &&
         board.fields[1].state == player &&
         board.fields[2].state == player) ||
@@ -25,7 +27,7 @@ export class State {
       (board.fields[6].state == player &&
         board.fields[7].state == player &&
         board.fields[8].state == player) ||
-      // check vertical
+      // vertikal
       (board.fields[0].state == player &&
         board.fields[3].state == player &&
         board.fields[6].state == player) ||
@@ -35,7 +37,7 @@ export class State {
       (board.fields[2].state == player &&
         board.fields[5].state == player &&
         board.fields[8].state == player) ||
-      // check diagonal
+      // diagonal
       (board.fields[0].state == player &&
         board.fields[4].state == player &&
         board.fields[8].state == player) ||
@@ -49,6 +51,7 @@ export class State {
     }
   }
 
+  // ueberprueft, ob noch auf das Spielfeld gesetzt werden kann
   private isDraw(board: Board): boolean {
     for (let i = 0; i < 9; i++) {
       if (board.fields[i].isEmpty()) {

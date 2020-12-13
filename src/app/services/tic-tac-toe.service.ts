@@ -4,6 +4,8 @@ import { HistoryItem } from '../components/pages/history/history-item';
 @Injectable({
   providedIn: 'root',
 })
+
+// ermoeglicht Kommunikation / Datenaustausch zwischen den versch. Komponenten
 export class TicTacToeService {
   private _isAi: boolean = true;
   private _namePlayer1: string = 'Spieler 1';
@@ -11,7 +13,8 @@ export class TicTacToeService {
   private _historyItem: HistoryItem[] = [];
 
   constructor() {
-    this._historyItem.push(new HistoryItem('John', 'Wayne', 1));
+    // Chuck Norris spielt jedes Spiel zuerst! ;)
+    this._historyItem.push(new HistoryItem('Chuck', 'Norris', 1));
   }
 
   get isAi(): boolean {

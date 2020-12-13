@@ -1,5 +1,3 @@
-import { State } from '../../game/state';
-
 export class HistoryItem {
   private _player1: string;
   private _player2: string;
@@ -27,6 +25,8 @@ export class HistoryItem {
     return this._player1 + ' hat gewonnen!';
   }
 
+  //erstellt Zeitstempel, bestehend aus Datum und Uhrzeit
+  //und gibt diesen zurück
   get timestamp(): string {
     return (
       this._timestamp.toLocaleDateString() +

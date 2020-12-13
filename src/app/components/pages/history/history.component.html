@@ -11,6 +11,9 @@
         </tr>
       </thead>
       <tbody>
+        <!-- ruft Methode "get history()" in "history.components.ts" auf, erhaelt ein Array, erstellt
+             fuer jedes Element des Arrays (hier als "historyItem" bezeichnet) eine Tabellenzeile mit
+             Datenfeldern, die Namen, Spielausgang und Datum auslesen -->
         <tr *ngFor="let historyItem of history; let i = index">
           <td>{{ historyItem.player1 }}</td>
           <td>{{ historyItem.player2 }}</td>
@@ -20,6 +23,11 @@
       </tbody>
     </table>
     <div class="btnContainer">
+      <!-- ueber "routerLink" wird der entsprechende Pfad angesprochen,
+       der zuvor im Router-Modul "app-routing.module.ts" definiert
+       wurde -->
+      <!-- das Attribut "mat-raised-button" greift auf ein Designelement
+           von Angular-Material zu -->
       <button id="start" routerLink="/game" mat-raised-button>
         Spiel starten
       </button>

@@ -1,12 +1,23 @@
 <div id="heading">
+  <!-- ruft Methode "get activePlayer()" in "game.components.ts" auf -->
   <h1>{{ activePlayer }} ist dran!</h1>
 </div>
 <div class="board">
+  <!-- ruft Methode "get fields()" in "game.components.ts" auf, erhaelt ein Array, erstellt
+    fuer jedes Element des Arrays (hier als "field" bezeichnet) einen div-Container mit p-Tag
+    und liest dessen Index aus -->
   <div *ngFor="let field of fields; let i = index">
+    <!-- mit "(click)" erhaelt der div-Container einen Eventlistener, durch einen Mausklick auf
+      das entsprechende Element wird die Methode "onClick()" aufgerufen und dieser der Index des
+      Feldes als Parameter uebergeben -->
     <div class="field" (click)="onClick(i)">
+      <!-- ruft Methode "get state()" in "field.ts" des entsprechenden Feldes auf -->
       <p>{{ field.state }}</p>
     </div>
   </div>
 </div>
-
-<button id="resetGame" (click)="resetGame()">Spiel zur&uuml;cksetzen</button>
+<!-- durch einen Mausklick wird die Methode "resetGame() in "game.components.ts" aufgerufen -->
+<!-- das Attribut "mat-raised-button" greift auf ein Designelement von Angular-Material zu -->
+<button id="resetGame" (click)="resetGame()" mat-raised-button>
+  Spiel zur&uuml;cksetzen
+</button>
